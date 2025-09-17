@@ -7,9 +7,7 @@ editor_options:
 ---
 Welcome! Use the navbar to browse each task, or click below:
 
-- [Task 1 – Conceptual](task1.qmd)
-
-- [Task 2 – Delimited Data](task2.qmd)
-
-- [Task 3 – Excel + CSV](task3.qmd)
+- [Task 1 – Conceptual](pages/task1.html)
+- [Task 2 – Delimited Data](pages/task2.html)
+- [Task 3 – Excel + CSV](pages/task3.html)
 

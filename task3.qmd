@@ -1,0 +1,68 @@
+---
+title: "task3"
+editor: visual
+---
+
+#### Task 3
+
+```{r}
+library(readxl)
+library(readr)
+library(dplyr)
+
+# 1. Import white wine Excel file (sheet 1)
+white_wine = read_excel("~/Desktop/NCSU/Fall 2025/ST558/Homework4/white-wine.xlsx", sheet = 1)
+
+# 2. Fix column names:
+
+alt_names = read_excel("~/Desktop/NCSU/Fall 2025/ST558/Homework4/white-wine.xlsx", sheet = 2)[[1]]
+colnames(white_wine) = alt_names
+
+# 3. Add column to indicate type
+white_wine = white_wine |>
+  mutate(type = "white")
+
+# 4. Import red wine CSV (semicolon-delimited)
+red_wine = read_delim(
+  "https://www4.stat.ncsu.edu/~online/datasets/red-wine.csv",
+  delim = ";"
+)
+
+# Replace column names with the same `alt_names`
+colnames(red_wine) = alt_names
+
+# Add column to indicate type
+red_wine = red_wine |>
+  mutate(type = "red")
+
+# 5. Combine white + red into one tibble
+wine = bind_rows(white_wine, red_wine)
+
+# 6. Filter high-quality wines:
+#    - quality > 6.5
+#    - alcohol < 13.2
+high_quality = wine |>
+  filter(quality > 6.5, alcohol < 13.2)
+
+# 7. Sort from highest to lowest quality
+high_quality = high_quality |>
+  arrange(desc(quality))
+
+# 8. Select only alcohol, type, quality
+high_quality_small = high_quality |>
+  select(alcohol, type, quality)
+
+# 9. Add mean & sd of alcohol by quality
+summary_stats = high_quality_small |>
+  group_by(quality) |>
+  summarise(
+    mean_alcohol = mean(alcohol, na.rm = TRUE),
+    sd_alcohol   = sd(alcohol, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+# Show final outputs
+high_quality_small
+summary_stats
+
+```
