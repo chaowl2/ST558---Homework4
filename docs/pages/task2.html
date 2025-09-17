@@ -186,7 +186,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pages/task3.html" class="sidebar-item-text sidebar-link">Homework3</a>
+  <a href="../pages/task3.html" class="sidebar-item-text sidebar-link">task3</a>
   </div>
 </li>
     </ul>
@@ -234,7 +234,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="task-2-reading-delimited-data" class="level2">
 <h2 class="anchored" data-anchor-id="task-2-reading-delimited-data">Task 2 Reading Delimited Data</h2>
 <section id="read-this-data-into-r-directly-from-the-url-using-functions-from-the-tidyverse.-notice-that-the-data-doesnt-include-column-names---add-those-in-a-manner-of-your-choosing.-print-out-the-tibble-just-call-the-object-name." class="level4">
-<h4 class="anchored" data-anchor-id="read-this-data-into-r-directly-from-the-url-using-functions-from-the-tidyverse.-notice-that-the-data-doesnt-include-column-names---add-those-in-a-manner-of-your-choosing.-print-out-the-tibble-just-call-the-object-name.">1. Read this data into R directly from the URL using functions from the tidyverse. Notice that the data doesn't include column names - add those (in a manner of your choosing). Print out the tibble (just call the object name).</h4>
+<h4 class="anchored" data-anchor-id="read-this-data-into-r-directly-from-the-url-using-functions-from-the-tidyverse.-notice-that-the-data-doesnt-include-column-names---add-those-in-a-manner-of-your-choosing.-print-out-the-tibble-just-call-the-object-name.">1. Read this data into R directly from the URL using functions from the tidyverse. Notice that the data doesn’t include column names - add those (in a manner of your choosing). Print out the tibble (just call the object name).</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -295,10 +295,10 @@ Attaching package: 'dplyr'</code></pre>
 </div>
 </section>
 <section id="start-a-chain-that-would-overwrite-the-type_of_glass-variable-using-mutate.-create-a-character-string-version-that-is-replace-1-with-building_windows_float_processed-2-with-building_win...-etc.-instead-see-the-variable-descriptions-above-to-give-meaningful-values.-if-you-are-familiar-with-factors-feel-free-to-use-that-instead-of-a-character-string-variable---otherwise-think-ifthenelse-via-ifelse." class="level4">
-<h4 class="anchored" data-anchor-id="start-a-chain-that-would-overwrite-the-type_of_glass-variable-using-mutate.-create-a-character-string-version-that-is-replace-1-with-building_windows_float_processed-2-with-building_win...-etc.-instead-see-the-variable-descriptions-above-to-give-meaningful-values.-if-you-are-familiar-with-factors-feel-free-to-use-that-instead-of-a-character-string-variable---otherwise-think-ifthenelse-via-ifelse.">2. Start a chain that would overwrite the Type_of_glass variable using mutate(). Create a character string version (that is, replace 1 with "building_windows_float_processed", 2 with "building_win...", etc.) instead (see the variable descriptions above to give meaningful values). (If you are familiar with factors, feel free to use that instead of a character string variable - otherwise, think if/then/else via ifelse().)</h4>
+<h4 class="anchored" data-anchor-id="start-a-chain-that-would-overwrite-the-type_of_glass-variable-using-mutate.-create-a-character-string-version-that-is-replace-1-with-building_windows_float_processed-2-with-building_win...-etc.-instead-see-the-variable-descriptions-above-to-give-meaningful-values.-if-you-are-familiar-with-factors-feel-free-to-use-that-instead-of-a-character-string-variable---otherwise-think-ifthenelse-via-ifelse.">2. Start a chain that would overwrite the Type_of_glass variable using mutate(). Create a character string version (that is, replace 1 with “building_windows_float_processed”, 2 with “building_win...”, etc.) instead (see the variable descriptions above to give meaningful values). (If you are familiar with factors, feel free to use that instead of a character string variable - otherwise, think if/then/else via ifelse().)</h4>
 </section>
 <section id="continue-your-chain-and-keep-only-observations-where-the-fe-variable-is-less-than-0.2-and-the-type-of-glass-is-either-tableware-or-headlamps." class="level4">
-<h4 class="anchored" data-anchor-id="continue-your-chain-and-keep-only-observations-where-the-fe-variable-is-less-than-0.2-and-the-type-of-glass-is-either-tableware-or-headlamps.">3. Continue your chain and keep only observations where the Fe variable is less than 0.2 and the Type of Glass is either "tableware" or "headlamps".</h4>
+<h4 class="anchored" data-anchor-id="continue-your-chain-and-keep-only-observations-where-the-fe-variable-is-less-than-0.2-and-the-type-of-glass-is-either-tableware-or-headlamps.">3. Continue your chain and keep only observations where the Fe variable is less than 0.2 and the Type of Glass is either “tableware” or “headlamps”.</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Recode and filter in one chain</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>glass_filtered <span class="ot">=</span> glass <span class="sc">|&gt;</span></span>
@@ -336,7 +336,7 @@ Attaching package: 'dplyr'</code></pre>
 <section id="yeast-data" class="level3">
 <h3 class="anchored" data-anchor-id="yeast-data">Yeast Data</h3>
 <section id="read-this-data-into-r-directly-from-the-url-using-functions-from-the-tidyverse.-notice-that-the-data-doesnt-include-column-names---add-those-in-a-manner-of-your-choosing.-print-out-the-tibble-just-call-the-object-name.-1" class="level4">
-<h4 class="anchored" data-anchor-id="read-this-data-into-r-directly-from-the-url-using-functions-from-the-tidyverse.-notice-that-the-data-doesnt-include-column-names---add-those-in-a-manner-of-your-choosing.-print-out-the-tibble-just-call-the-object-name.-1">1. Read this data into R directly from the URL using functions from the tidyverse. Notice that the data doesn't include column names - add those (in a manner of your choosing). Print out the tibble (just call the object name).</h4>
+<h4 class="anchored" data-anchor-id="read-this-data-into-r-directly-from-the-url-using-functions-from-the-tidyverse.-notice-that-the-data-doesnt-include-column-names---add-those-in-a-manner-of-your-choosing.-print-out-the-tibble-just-call-the-object-name.-1">1. Read this data into R directly from the URL using functions from the tidyverse. Notice that the data doesn’t include column names - add those (in a manner of your choosing). Print out the tibble (just call the object name).</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
@@ -575,7 +575,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="../pages/task3.html" class="pagination-link">
-        <span class="nav-page-text">Homework3</span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text">task3</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

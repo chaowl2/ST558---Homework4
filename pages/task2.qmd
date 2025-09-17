@@ -5,7 +5,7 @@ editor: visual
 
 ## Task 2 Reading Delimited Data
 
-#### 1.  Read this data into R directly from the URL using functions from the tidyverse. Notice that the data doesn\'t include column names - add those (in a manner of your choosing). Print out the tibble (just call the object name).
+#### 1. Read this data into R directly from the URL using functions from the tidyverse. Notice that the data doesn't include column names - add those (in a manner of your choosing). Print out the tibble (just call the object name).
 
 ```{r}
 library(readr)
@@ -36,9 +36,9 @@ glass = read_csv(
 glass
 ```
 
-#### 2.  Start a chain that would overwrite the Type_of_glass variable using mutate(). Create a character string version (that is, replace 1 with \"building_windows_float_processed\", 2 with \"building_win\...\", etc.) instead (see the variable descriptions above to give meaningful values). (If you are familiar with factors, feel free to use that instead of a character string variable - otherwise, think if/then/else via ifelse().)
+#### 2. Start a chain that would overwrite the Type_of_glass variable using mutate(). Create a character string version (that is, replace 1 with "building_windows_float_processed", 2 with "building_win\...", etc.) instead (see the variable descriptions above to give meaningful values). (If you are familiar with factors, feel free to use that instead of a character string variable - otherwise, think if/then/else via ifelse().)
 
-#### 3. Continue your chain and keep only observations where the Fe variable is less than 0.2 and the Type of Glass is either \"tableware\" or \"headlamps\".
+#### 3. Continue your chain and keep only observations where the Fe variable is less than 0.2 and the Type of Glass is either "tableware" or "headlamps".
 
 ```{r}
 # Recode and filter in one chain
@@ -61,7 +61,7 @@ glass_filtered
 
 ### Yeast Data
 
-#### 1. Read this data into R directly from the URL using functions from the tidyverse. Notice that the data doesn\'t include column names - add those (in a manner of your choosing). Print out the tibble (just call the object name).
+#### 1. Read this data into R directly from the URL using functions from the tidyverse. Notice that the data doesn't include column names - add those (in a manner of your choosing). Print out the tibble (just call the object name).
 
 ```{r}
 library(readr)
