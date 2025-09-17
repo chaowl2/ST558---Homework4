@@ -5,7 +5,11 @@ toc: TRUE
 editor_options: 
   chunk_output_type: inline
 ---
+Welcome! Use the navbar to browse each task, or click below:
 
-An example pages site with multiple pages and a table of contents.
+- [Task 1 – Conceptual](task1.qmd)
 
-This could be a landing page for the site. Feel free to put whatever here!
+- [Task 2 – Delimited Data](task2.qmd)
+
+- [Task 3 – Excel + CSV](task3.qmd)
+

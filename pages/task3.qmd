@@ -1,0 +1,184 @@
+---
+title: "Homework3"
+editor: visual
+---
+
+## Task 2 Reading Delimited Data
+
+#### 1.  Read this data into R directly from the URL using functions from the tidyverse. Notice that the data doesn\'t include column names - add those (in a manner of your choosing). Print out the tibble (just call the object name).
+
+```{r}
+library(readr)
+library(dplyr)
+library(tibble)
+
+url <- "https://www4.stat.ncsu.edu/~online/datasets/glass.data"
+
+col_names <- c("Id","RI","Na","Mg","Al","Si","K","Ca","Ba","Fe","Type_of_glass")
+
+glass = read_csv(
+  url,
+  col_names = col_names,
+  col_types = cols(
+    Id = col_integer(),
+    RI = col_double(),
+    Na = col_double(),
+    Mg = col_double(),
+    Al = col_double(),
+    Si = col_double(),
+    K  = col_double(),
+    Ca = col_double(),
+    Ba = col_double(),
+    Fe = col_double(),
+    Type_of_glass = col_integer()
+  )
+)
+glass
+```
+
+#### 2.  Start a chain that would overwrite the Type_of_glass variable using mutate(). Create a character string version (that is, replace 1 with \"building_windows_float_processed\", 2 with \"building_win\...\", etc.) instead (see the variable descriptions above to give meaningful values). (If you are familiar with factors, feel free to use that instead of a character string variable - otherwise, think if/then/else via ifelse().)
+
+#### 3. Continue your chain and keep only observations where the Fe variable is less than 0.2 and the Type of Glass is either \"tableware\" or \"headlamps\".
+
+```{r}
+# Recode and filter in one chain
+glass_filtered = glass |>
+  mutate(Type_of_glass = case_when(
+    Type_of_glass == 1 ~ "building_windows_float_processed",
+    Type_of_glass == 2 ~ "building_windows_non_float_processed",
+    Type_of_glass == 3 ~ "vehicle_windows_float_processed",
+    Type_of_glass == 4 ~ "vehicle_windows_non_float_processed",
+    Type_of_glass == 5 ~ "containers",
+    Type_of_glass == 6 ~ "tableware",
+    Type_of_glass == 7 ~ "headlamps"
+  )) |>
+  filter(Fe < 0.2, Type_of_glass %in% c("tableware", "headlamps"))
+
+# Show results
+glass_filtered
+
+```
+
+### Yeast Data
+
+#### 1. Read this data into R directly from the URL using functions from the tidyverse. Notice that the data doesn\'t include column names - add those (in a manner of your choosing). Print out the tibble (just call the object name).
+
+```{r}
+library(readr)
+library(dplyr)
+
+url = "https://www4.stat.ncsu.edu/~online/datasets/yeast.data"
+
+col_names = c("seq_name","mcg","gvh","alm","mit",
+               "erl","pox","vac","nuc","class")
+
+yeast = read_table(
+  file = url,
+  col_names = col_names,
+  col_types = cols(
+    seq_name = col_character(),
+    mcg = col_double(),
+    gvh = col_double(),
+    alm = col_double(),
+    mit = col_double(),
+    erl = col_double(),  
+    pox = col_double(),  
+    vac = col_double(),
+    nuc = col_double(),
+    class = col_character()
+  )
+)
+
+yeast
+```
+
+#### 2. Start a chain that removes the seq_name and nuc columns.
+
+```{r}
+# drop seq_name and nuc
+yeast_clean = yeast |>
+  select(-seq_name, -nuc)
+
+```
+
+#### 3. Continue your chain to add columns corresponding to the mean and median of each numeric variable (mcg, gvh, alm, mit, erl, pox, and vac) at each class grouping (see the across() function as we did in the dplyr video!)
+
+```{r}
+# summarize by class 
+yeast_summary = yeast_clean |>
+  group_by(class) |>
+  summarise(
+    across(
+      c(mcg, gvh, alm, mit, erl, pox, vac),
+      list(mean = mean, median = median),
+      .names = "{.col}_{.fn}"
+    ),
+    .groups = "drop"
+  )
+
+yeast_summary
+```
+
+#### 
+
+```{r}
+library(readxl)
+library(readr)
+library(dplyr)
+
+# 1. Import white wine Excel file (sheet 1)
+white_wine = read_excel("~/Desktop/NCSU/Fall 2025/ST558/Homework4/white-wine.xlsx", sheet = 1)
+
+# 2. Fix column names:
+
+alt_names = read_excel("~/Desktop/NCSU/Fall 2025/ST558/Homework4/white-wine.xlsx", sheet = 2)[[1]]
+colnames(white_wine) = alt_names
+
+# 3. Add column to indicate type
+white_wine = white_wine |>
+  mutate(type = "white")
+
+# 4. Import red wine CSV (semicolon-delimited)
+red_wine = read_delim(
+  "https://www4.stat.ncsu.edu/~online/datasets/red-wine.csv",
+  delim = ";"
+)
+
+# Replace column names with the same `alt_names`
+colnames(red_wine) = alt_names
+
+# Add column to indicate type
+red_wine = red_wine |>
+  mutate(type = "red")
+
+# 5. Combine white + red into one tibble
+wine = bind_rows(white_wine, red_wine)
+
+# 6. Filter high-quality wines:
+#    - quality > 6.5
+#    - alcohol < 13.2
+high_quality = wine |>
+  filter(quality > 6.5, alcohol < 13.2)
+
+# 7. Sort from highest to lowest quality
+high_quality = high_quality |>
+  arrange(desc(quality))
+
+# 8. Select only alcohol, type, quality
+high_quality_small = high_quality |>
+  select(alcohol, type, quality)
+
+# 9. Add mean & sd of alcohol by quality
+summary_stats = high_quality_small |>
+  group_by(quality) |>
+  summarise(
+    mean_alcohol = mean(alcohol, na.rm = TRUE),
+    sd_alcohol   = sd(alcohol, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+# Show final outputs
+high_quality_small
+summary_stats
+
+```

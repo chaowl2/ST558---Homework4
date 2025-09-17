@@ -1,0 +1,45 @@
+---
+title: "task1"
+editor: visual
+---
+
+## Task 1: Conceptual Questions
+
+#### 1. If your working directory is myfolder/homework/, what relative path would you specify to get the file located at myfolder/MyData.csv?
+
+-   /MyData.csv
+
+#### 2. What are the major benefits of using R Projects?  
+
+-   Reproducible, self-contained working directories with stable relative paths.
+
+-   RStudio auto-sets the working directory when the project opens; keeps data, code, and outputs organized.
+
+-   It integrates smoothly with git/GitHub.
+
+#### 3. What is git and what is GitHub?  
+
+-   git: a distributed version control system for tracking changes, branching, and merging.
+
+-   GitHub: a cloud service that hosts git repositories and adds collaboration tools.
+
+#### 4. What are the two main differences between a tibble and a data.frame?  
+
+-    (i) Tibbles print compactly (few rows/columns) and avoid automatic type conversion.
+
+-   \(ii\) Tibbles are stricter: no partial name matching with \$, and subsetting keeps a tibble.
+
+#### 5. Rewrite the following \*\*nested\*\* function call using Base R's chaining operator (\`\|\>\`):
+
+```{r}
+# Load packages used below
+library(dplyr)
+library(tibble)
+
+as_tibble(iris) |>
+  select(starts_with("Petal"), Species) |>
+  filter(Petal.Length < 1.55) |>
+  arrange(Species)
+```
+
+## 
